@@ -1,19 +1,19 @@
 def bubble_sort(arr)
-
-    sorted_arr = []
-
-    while arr.length > 0
-        arr.each_index do |index|
-            if arr[index] == arr.last
-                last_item = arr.pop
-                sorted_arr.unshift(last_item)
-                break
-            end
+    n = arr.size
+    return arr if n <= 1
     
-            if arr[index] > arr[index + 1]
-                arr[index], arr[index + 1] = arr[index + 1 ], arr[index]
+    loop do
+        swapped = false
+
+        (n-1).times do |i|
+            if(arr[i] > arr[i+1])
+                arr[i], arr[i+1] = arr[i+1], arr[i]
+                swapped = true
             end
         end
+
+        break if not swapped
     end
-    sorted_arr
+
+    arr
 end
